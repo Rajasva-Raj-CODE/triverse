@@ -80,9 +80,22 @@ export default function Partner() {
             transition={{ duration: 0.5 }}
             className="w-full max-w-md z-10 relative"
           >
-            <Card className="relative backdrop-blur-xl bg-card/80 border-border/50 shadow-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
-              <CardContent className="relative py-8 px-6">
+            {/* Mobile Header Image */}
+            <div className="lg:hidden mb-6 -mt-8">
+              <div className="relative w-full h-48 rounded-t-2xl overflow-hidden">
+                <Image
+                  src="/images/servic-2.jpg"
+                  alt="Header"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent" />
+              </div>
+            </div>
+
+            <Card className="relative bg-white dark:bg-card border-border/50 shadow-2xl overflow-hidden rounded-2xl lg:rounded-2xl">
+              <CardContent className="relative py-8 px-6 lg:px-8">
                 <motion.div
                   initial={{ scale: 0.9, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
@@ -100,8 +113,8 @@ export default function Partner() {
                   transition={{ delay: 0.3, duration: 0.4 }}
                   className="text-center mb-6"
                 >
-                  <h2 className="text-2xl font-bold text-foreground">Become a Partner</h2>
-                  <p className="text-sm text-muted-foreground mt-2">Join us and grow together</p>
+                  <h2 className="text-2xl lg:text-3xl font-bold text-foreground">Become a Partner</h2>
+                  <p className="text-sm text-muted-foreground mt-2 px-2">Join us and grow together</p>
                 </motion.div>
 
                 <Form {...form}>
@@ -121,7 +134,7 @@ export default function Partner() {
                                 <FormControl>
                                   <Input 
                                     placeholder="First Name" 
-                                    className="bg-background/50 border-border/50 focus:border-primary focus:ring-primary/20 transition-all duration-200 h-11" 
+                                    className="bg-background border-border focus:border-brand-primary focus:ring-brand-primary/20 transition-all duration-200 h-11" 
                                     {...field} 
                                   />
                                 </FormControl>
@@ -138,7 +151,7 @@ export default function Partner() {
                                 <FormControl>
                                   <Input 
                                     placeholder="Last Name" 
-                                    className="bg-background/50 border-border/50 focus:border-primary focus:ring-primary/20 transition-all duration-200 h-11" 
+                                    className="bg-background border-border focus:border-brand-primary focus:ring-brand-primary/20 transition-all duration-200 h-11" 
                                     {...field} 
                                   />
                                 </FormControl>
@@ -162,8 +175,8 @@ export default function Partner() {
                                 <FormControl>
                                   <Input 
                                     type="email" 
-                                    placeholder="Email" 
-                                    className="bg-background/50 border-border/50 focus:border-primary focus:ring-primary/20 transition-all duration-200 h-11" 
+                                    placeholder="Example@email.com" 
+                                    className="bg-background border-border focus:border-brand-primary focus:ring-brand-primary/20 transition-all duration-200 h-11" 
                                     {...field} 
                                   />
                                 </FormControl>
@@ -187,7 +200,7 @@ export default function Partner() {
                                 <FormControl>
                                   <Textarea
                                       placeholder="Your message"
-                                      className="bg-background/50 border-border/50 focus:border-primary focus:ring-primary/20 transition-all duration-200 h-24 resize-none"
+                                      className="bg-background border-border focus:border-brand-primary focus:ring-brand-primary/20 transition-all duration-200 h-24 resize-none"
                                       {...field}
                                   />
                                 </FormControl>
@@ -230,7 +243,7 @@ export default function Partner() {
                     >
                       <Button
                           type="submit"
-                          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-11 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 relative overflow-hidden group cursor-pointer"
+                          className="w-full bg-brand-primary hover:bg-brand-primary/90 text-brand-text-primary h-11 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 relative overflow-hidden group cursor-pointer"
                           disabled={form.formState.isSubmitting || loading}
                       >
                         <span className="relative z-10 flex items-center justify-center gap-2">
@@ -245,7 +258,7 @@ export default function Partner() {
                         </span>
                         {!loading && !form.formState.isSubmitting && (
                           <motion.div
-                            className="absolute inset-0 bg-primary-foreground/10"
+                            className="absolute inset-0 bg-white/10"
                             initial={{ x: "-100%" }}
                             whileHover={{ x: 0 }}
                             transition={{ duration: 0.3 }}
@@ -269,6 +282,16 @@ export default function Partner() {
                     )}
                   </form>
                 </Form>
+
+                {/* Copyright */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.9, duration: 0.4 }}
+                  className="text-xs text-muted-foreground text-center pt-4 border-t border-border/50 mt-6"
+                >
+                  © 2023 ALL RIGHTS RESERVED
+                </motion.div>
               </CardContent>
             </Card>
 

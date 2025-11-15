@@ -2,14 +2,13 @@
 
 import Link from "next/link";
 import { logout } from "@/context/globalLogout";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Users,
   Settings,
-  FileText,
   Database,
   Building2,
   Bell,
@@ -22,8 +21,6 @@ import {
   Folder,
   Camera,
   Shield,
-  Menu,
-  X,
   LucideIcon,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -109,11 +106,6 @@ const sidebarMenuItems = [
   {
     title: "Modules",
     items: [
-      {
-        title: " Company",
-        url: "/company-dashboard/company",
-        icon: Building2,
-      },
       {
         title: "Projects",
         url: "/company-dashboard/projects",

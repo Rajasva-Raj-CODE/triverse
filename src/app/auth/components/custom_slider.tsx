@@ -80,8 +80,8 @@ export function CustomSlider() {
     };
 
     return (
-        <AnimatedGradient className="hidden lg:flex w-full lg:w-[65%] h-screen relative overflow-hidden">
-            <Spotlight className="top-0 left-0 opacity-30 dark:opacity-20" fill="var(--brand-primary)" />
+        <AnimatedGradient className="hidden lg:flex w-full lg:w-[65%] h-screen relative overflow-hidden bg-brand-bg-tertiary">
+            <Spotlight className="top-0 left-0 opacity-20 dark:opacity-15" fill="var(--brand-primary)" />
             <div className="relative w-full h-full overflow-hidden">
                 <div
                     className="flex h-full w-full"
@@ -108,10 +108,9 @@ export function CustomSlider() {
                                     alt={`Slide ${i}`}
                                     width={1200}
                                     height={800}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover brightness-[0.7] contrast-110"
                                     priority={i === 0}
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
                             </motion.div>
                         </div>
                     ))}
@@ -129,8 +128,8 @@ export function CustomSlider() {
                             className={cn(
                                 "h-2 rounded-full transition-all duration-300",
                                 index === i || (index === totalSlides && i === 0)
-                                    ? "w-8 bg-primary"
-                                    : "w-2 bg-muted-foreground/40 hover:bg-muted-foreground/60"
+                                    ? "w-8 bg-brand-primary"
+                                    : "w-2 bg-white/40 hover:bg-white/60"
                             )}
                             aria-label={`Go to slide ${i + 1}`}
                         />
@@ -141,17 +140,17 @@ export function CustomSlider() {
                     onClick={goToPrevSlide}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-background/80 dark:bg-background/60 backdrop-blur-xl hover:bg-background/90 dark:hover:bg-background/80 rounded-full p-3 shadow-lg border border-border/50 z-20 transition-all duration-200"
+                    className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/10 dark:bg-white/5 backdrop-blur-xl hover:bg-white/20 dark:hover:bg-white/10 rounded-full p-3 shadow-lg border border-white/20 z-20 transition-all duration-200"
                 >
-                    <ChevronLeft className="w-5 h-5 text-foreground" />
+                    <ChevronLeft className="w-5 h-5 text-white" />
                 </motion.button>
                 <motion.button
                     onClick={goToNextSlide}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-background/80 dark:bg-background/60 backdrop-blur-xl hover:bg-background/90 dark:hover:bg-background/80 rounded-full p-3 shadow-lg border border-border/50 z-20 transition-all duration-200"
+                    className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/10 dark:bg-white/5 backdrop-blur-xl hover:bg-white/20 dark:hover:bg-white/10 rounded-full p-3 shadow-lg border border-white/20 z-20 transition-all duration-200"
                 >
-                    <ChevronRight className="w-5 h-5 text-foreground" />
+                    <ChevronRight className="w-5 h-5 text-white" />
                 </motion.button>
             </div>
         </AnimatedGradient>
