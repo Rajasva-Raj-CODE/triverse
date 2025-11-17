@@ -59,13 +59,13 @@ const ResponsiveNav = () => {
           )}
           <Link
             href="/auth/login"
-            className="relative z-20 px-3.5 py-1.5 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-brand-text-primary font-semibold text-xs transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-brand-primary/20 whitespace-nowrap flex-shrink-0"
+            className="relative z-20 px-4 py-2 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-brand-text-primary font-semibold text-sm transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-brand-primary/20 whitespace-nowrap flex-shrink-0"
           >
             Login
           </Link>
           <Link
             href="/auth/partner"
-            className="relative z-20 px-3.5 py-1.5 rounded-full bg-background/50 hover:bg-background border border-border/50 hover:border-brand-primary/30 text-foreground font-semibold text-xs transition-all duration-200 hover:scale-105 whitespace-nowrap flex-shrink-0"
+            className="relative z-20 px-4 py-2 rounded-full bg-background/50 hover:bg-background border border-border/50 hover:border-brand-primary/30 text-foreground font-semibold text-sm transition-all duration-200 hover:scale-105 whitespace-nowrap flex-shrink-0"
           >
             Partner
           </Link>
@@ -85,13 +85,14 @@ const ResponsiveNav = () => {
         <MobileNavMenu
           isOpen={isMobileMenuOpen}
           onClose={() => setIsMobileMenuOpen(false)}
+          
         >
           {navLinks.map((link) => (
             <Link
               key={link.id}
               href={link.url}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-base font-medium text-foreground hover:text-brand-primary transition-colors py-2"
+              className="text-lg font-medium text-foreground hover:text-brand-primary transition-colors py-2"
             >
               {link.label}
             </Link>
@@ -122,14 +123,14 @@ const ResponsiveNav = () => {
             <Link
               href="/auth/login"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full text-center px-4 py-2.5 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-brand-text-primary font-semibold text-sm transition-all duration-200 hover:shadow-lg hover:shadow-brand-primary/20"
+              className="w-full text-center px-4 py-2.5 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-brand-text-primary font-semibold text-base transition-all duration-200 hover:shadow-lg hover:shadow-brand-primary/20"
             >
               Login
             </Link>
             <Link
               href="/auth/partner"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full text-center px-4 py-2.5 rounded-full bg-background/50 hover:bg-background border border-border/50 hover:border-brand-primary/30 text-foreground font-semibold text-sm transition-all duration-200"
+              className="w-full text-center px-4 py-2.5 rounded-full bg-background/50 hover:bg-background border border-border/50 hover:border-brand-primary/30 text-foreground font-semibold text-base transition-all duration-200"
             >
               Become A Partner
             </Link>

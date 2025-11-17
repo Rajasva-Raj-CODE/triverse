@@ -131,7 +131,7 @@ export const NavItems = ({ items, className, onItemClick, visible }: NavItemsPro
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-0.5 text-xs font-medium text-foreground/70 transition duration-200 lg:flex lg:space-x-0.5",
+        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-0.5 text-sm font-medium text-foreground/70 transition duration-200 lg:flex lg:space-x-0.5",
         visible && "space-x-0",
         className,
       )}
@@ -141,8 +141,8 @@ export const NavItems = ({ items, className, onItemClick, visible }: NavItemsPro
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
           className={cn(
-            "relative px-2.5 py-1.5 text-foreground/80 hover:text-brand-primary transition-all duration-200 font-medium whitespace-nowrap",
-            visible && "px-2 py-1 text-[10px]"
+            "relative px-2.5 py-1.5 text-sm text-foreground/80 hover:text-brand-primary transition-all duration-200 font-medium whitespace-nowrap",
+            visible && "px-2 py-1 text-xs"
           )}
           key={`link-${idx}`}
           href={item.link}
