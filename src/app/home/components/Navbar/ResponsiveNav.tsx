@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
-import { Sun, Moon } from "lucide-react";
+import React, { useState } from "react";
 import {
   Navbar,
   NavBody,
@@ -16,25 +14,15 @@ import {
 import Logo from "@/app/home/components/Helper/Logo";
 import { navLinks } from "@/app/home/components/constant/constant";
 import Link from "next/link";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const ResponsiveNav = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  // Avoid hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const navItems = navLinks.map((link) => ({
     name: link.label,
     link: link.url,
   }));
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
 
   return (
     <Navbar>
@@ -44,19 +32,7 @@ const ResponsiveNav = () => {
         </Link>
         <NavItems items={navItems} />
         <div className="relative z-20 flex items-center gap-1.5 flex-shrink-0">
-          {mounted && (
-            <button
-              onClick={toggleTheme}
-              className="relative z-20 flex items-center justify-center w-8 h-8 rounded-full bg-background/50 hover:bg-brand-primary/10 border border-border/50 hover:border-brand-primary/30 transition-all duration-200 hover:scale-105 flex-shrink-0"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <Sun className="w-3.5 h-3.5 text-foreground" />
-              ) : (
-                <Moon className="w-3.5 h-3.5 text-foreground" />
-              )}
-            </button>
-          )}
+          <ThemeToggle variant="icon" />
           <Link
             href="/auth/login"
             className="relative z-20 px-4 py-2 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-brand-text-primary font-semibold text-sm transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-brand-primary/20 whitespace-nowrap flex-shrink-0"
@@ -98,28 +74,9 @@ const ResponsiveNav = () => {
             </Link>
           ))}
           <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-border/50">
-            {mounted && (
-              <button
-                onClick={() => {
-                  toggleTheme();
-                  setIsMobileMenuOpen(false);
-                }}
-                className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-full bg-background/50 hover:bg-brand-primary/10 border border-border/50 hover:border-brand-primary/30 transition-all duration-200 text-foreground font-medium"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? (
-                  <>
-                    <Sun className="w-4 h-4" />
-                    <span>Light Mode</span>
-                  </>
-                ) : (
-                  <>
-                    <Moon className="w-4 h-4" />
-                    <span>Dark Mode</span>
-                  </>
-                )}
-              </button>
-            )}
+            <div onClick={() => setIsMobileMenuOpen(false)}>
+              <ThemeToggle variant="button" className="w-full" />
+            </div>
             <Link
               href="/auth/login"
               onClick={() => setIsMobileMenuOpen(false)}

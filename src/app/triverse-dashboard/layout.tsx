@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { logout } from "@/context/globalLogout";
-import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import {
   LayoutDashboard,
   Users,
@@ -14,8 +14,6 @@ import {
   Bell,
   LogOut,
   Search,
-  Sun,
-  Moon,
   UserRound,
   ChevronDown,
   Folder,
@@ -234,13 +232,7 @@ export default function SuperAdminLayout({
 
 function TopNavbar() {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const notifications = [
     {
@@ -290,41 +282,7 @@ function TopNavbar() {
 
       <div className="flex items-center gap-2">
         {/* Theme Toggle */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-9 w-9 rounded-lg border border-[var(--brand-border)] dark:border-[var(--brand-border-medium)] hover:bg-[var(--brand-primary)]/30 dark:hover:bg-[var(--brand-primary)]/30 text-[var(--brand-text-primary)] dark:text-[var(--brand-text-primary)] transition-all duration-200"
-              suppressHydrationWarning
-            >
-              {mounted ? (
-                theme === "dark" ? (
-                  <Sun className="h-4 w-4" />
-                ) : (
-                  <Moon className="h-4 w-4" />
-                )
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-40 bg-white dark:bg-[var(--brand-bg-primary)]/95 backdrop-blur border border-[var(--brand-border-medium)] dark:border-[var(--brand-border)]">
-            <DropdownMenuItem onClick={() => setTheme("light")} className="text-[var(--brand-text-primary)] dark:text-[var(--brand-text-primary)] hover:bg-[var(--brand-primary)]/30 dark:hover:bg-[var(--brand-primary)]/30">
-              <Sun className="mr-2 h-4 w-4" />
-              Light
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setTheme("dark")} className="text-[var(--brand-text-primary)] dark:text-[var(--brand-text-primary)] hover:bg-[var(--brand-primary)]/30 dark:hover:bg-[var(--brand-primary)]/30">
-              <Moon className="mr-2 h-4 w-4" />
-              Dark
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setTheme("system")} className="text-[var(--brand-text-primary)] dark:text-[var(--brand-text-primary)] hover:bg-[var(--brand-primary)]/30 dark:hover:bg-[var(--brand-primary)]/30">
-              <Settings className="mr-2 h-4 w-4" />
-              System
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <ThemeToggle />
 
         {/* Notifications */}
         <Sheet>
